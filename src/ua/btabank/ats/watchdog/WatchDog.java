@@ -89,7 +89,7 @@ public class WatchDog {
 
 
     public static void sentFiles() {
-        Path pathOut = Paths.get("I:\\INFO\\GNA\\OUT\\");
+        Path pathOut = Paths.get("D:\\INFO\\GNA\\OUT\\");
 
         WatchService watchService = null;
 
@@ -188,19 +188,19 @@ public class WatchDog {
     }
 
     public static void logFile(Date date, String s1){
-        File logPath = new File("I:\\INFO\\GNA\\ARCH\\");
+        File logPath = new File("D:\\INFO\\GNA\\ARCH\\");
         File folder = new File(String.valueOf(logPath).concat("\\").concat(logNameFile(date)));
 
         if (!(folder.exists()) || !(folder.isDirectory())) {
 
-            new File("I:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date))).mkdirs();
-            write("I:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date)).concat("\\").concat(logNameFile(date)).concat(".txt"), s1);
+            new File("D:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date))).mkdirs();
+            write("D:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date)).concat("\\").concat(logNameFile(date)).concat(".txt"), s1);
             logMessages.put(logMessages.size()+1, s1);
 
         }
         else{
 
-            write("I:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date)).concat("\\").concat(logNameFile(date)).concat(".txt"), s1);
+            write("D:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date)).concat("\\").concat(logNameFile(date)).concat(".txt"), s1);
             logMessages.put(logMessages.size()+1, s1);
         }
 
@@ -208,21 +208,21 @@ public class WatchDog {
     }
 
     public static void logFile(Date date, String s1, String objDelete){
-        File logPath = new File("I:\\INFO\\GNA\\ARCH\\");
+        File logPath = new File("D:\\INFO\\GNA\\ARCH\\");
         File folder = new File(String.valueOf(logPath).concat("\\").concat(logNameFile(date)));
 
         if (!(folder.exists()) || !(folder.isDirectory())) {
 
-            new File("I:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date))).mkdirs();
-            write("I:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date)).concat("\\").concat(logNameFile(date)).concat(".txt"), s1);
-            write("I:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date)).concat("\\").concat("objDeleteLog.txt"), objDelete);
+            new File("D:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date))).mkdirs();
+            write("D:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date)).concat("\\").concat(logNameFile(date)).concat(".txt"), s1);
+            write("D:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date)).concat("\\").concat("objDeleteLog.txt"), objDelete);
             logMessages.put(logMessages.size()+1, s1);
             logMessages.put(logMessages.size()+1, objDelete);
         }
         else{
 
-            write("I:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date)).concat("\\").concat(logNameFile(date)).concat(".txt"), s1);
-            write("I:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date)).concat("\\").concat("objDeleteLog.txt"), objDelete);
+            write("D:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date)).concat("\\").concat(logNameFile(date)).concat(".txt"), s1);
+            write("D:\\INFO\\GNA\\ARCH\\".concat(logNameFile(date)).concat("\\").concat("objDeleteLog.txt"), objDelete);
             logMessages.put(logMessages.size()+1, s1);
             logMessages.put(logMessages.size()+1, objDelete);
         }
@@ -240,7 +240,7 @@ public class WatchDog {
 
             NewFileNameDate file = new NewFileNameDate(s, date);
             f0Files.add(new ArrayFiles(file.fileName, file.dateOfFile));
-            f0Files.get(f0Files.size() - 1).act = readFileLineByLine("I:\\INFO\\GNA\\OUT\\".concat(s));
+            f0Files.get(f0Files.size() - 1).act = readFileLineByLine("D:\\INFO\\GNA\\OUT\\".concat(s));
             String s1 = "File " + f0Files.get(f0Files.size() - 1).name0 + " is created " + f0Files.get(f0Files.size() - 1).date0;
             logFile(date, s1);
 
@@ -391,14 +391,24 @@ public class WatchDog {
 
         public void run() {
 
-           Calendar calendar = Calendar.getInstance();
+            Calendar calendar = Calendar.getInstance();
+
+            //System.out.println(calendar);
+            /*if (calendar.get(calendar.DAY_OF_MONTH) == 1 && calendar.get(calendar.HOUR_OF_DAY) == 3 && calendar.get(calendar.MINUTE) == 0
+                    && calendar.get(calendar.SECOND) == 0 ) {
+                Thread t5 = new Thread(new FolderZipThread());
+                t5.start();
+                t5.interrupt();
+            }*/
+
+
 
             if (calendar.get(calendar.DAY_OF_MONTH) != lastEvent.get(lastEvent.DAY_OF_MONTH)) {
                 logMessages.clear();
             }
 
 
-            File outFolder = new File("I:\\INFO\\GNA\\OUT\\");
+            File outFolder = new File("D:\\INFO\\GNA\\OUT\\");
             outFolder.listFiles();
 
 
@@ -413,6 +423,8 @@ public class WatchDog {
                 outFiles.put(outFiles.size()+1, String.valueOf(x.getName()));
 
             }*/
+
+
 
         }
 

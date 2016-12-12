@@ -10,7 +10,7 @@ public class FolderZipThread extends Thread {
 
     public void run(){
 
-        FolderZip runFolderZip = new FolderZip("D:\\INFO\\GNA\\ARCH", "arch.zip");
+        FolderZip runFolderZip = new FolderZip("D:\\INFO\\GNA\\ARCH", "D:\\INFO\\GNA\\ARCH\\arch.zip");
 
     }
 

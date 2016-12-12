@@ -28,8 +28,13 @@ public class FolderZip {
         // Определение кодировки
        // zout.setEncoding("CP866");
 
+
+
+
         // Создание объекта File object архивируемой директории
         File fileSource = new File(source_dir);
+
+
 
         addDirectory(zout, fileSource);
 
@@ -41,12 +46,17 @@ public class FolderZip {
     private void addDirectory(ZipOutputStream zout, File fileSource)
             throws Exception
     {
+
         File[] files = fileSource.listFiles();
+
+
+
+
         System.out.println("Добавление директории <" + fileSource.getName() + ">");
         for(int i = 0; i < files.length; i++) {
             // Если file является директорией, то рекурсивно вызываем
             // метод addDirectory
-            if(files[i].isDirectory()) {
+            if(files[i].isDirectory() && files[i].getName().length() == 8) {
                 addDirectory(zout, files[i]);
                 continue;
             }
